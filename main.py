@@ -1,3 +1,4 @@
+import json
 import os
 
 from dotenv import load_dotenv
@@ -31,9 +32,18 @@ app.add_middleware(
 
 # Database Configurations
 mongodb_uri = os.getenv('DATABASE_URL')
-port = os.getenv('PORT')
+port = int(os.getenv('PORT'))
 client = MongoClient(mongodb_uri, port)
 db = client["User"]
+
+
+# Root Endpoint
+@app.get("/")
+async def index():
+    response = json.dumps({'server': 'active', 'message': 'Tournament App Sever is Active!'})
+    if response:
+        return response
+    raise HTTPException(404)
 
 
 # Smash Player Endpoints

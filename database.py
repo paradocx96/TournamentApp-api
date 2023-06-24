@@ -1,11 +1,15 @@
 import os
 import motor.motor_asyncio
+from dotenv import load_dotenv
 
 from model import OverwatchGame
 from model import RocketGame
 from model import Smash
 from model import SmashGame
 from model import ValorantGame
+
+# App Configurations
+load_dotenv()
 
 # Database Connection
 client = motor.motor_asyncio.AsyncIOMotorClient(os.getenv('DATABASE_URL'))
