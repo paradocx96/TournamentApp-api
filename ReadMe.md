@@ -1,4 +1,4 @@
-# Backend
+# Tournament App API
 
 ## Setup Environment
 ```bash
